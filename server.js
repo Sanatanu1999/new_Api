@@ -4,11 +4,13 @@ const appServer=express();
 const PORT=process.env.PORT||4403;
 
 const mongoose=require('mongoose')
+const cors=require('cors')
 
 const apiRouter=require('./router/apiRouter')
 
 
 appServer.use(express.urlencoded({extended:true}))
+appServer.use(cors())
 appServer.use(apiRouter)
 
 mongoose.connect(process.env.DB_URL)
